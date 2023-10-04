@@ -20,3 +20,32 @@ class Dense():
         else :
             self.activation = 'linear'
             self.activation_function = lambda x: x
+
+    def predict(self, a_prev:np.ndarray)->np.ndarray:
+        """This function compute a matrix multiplication between a_prev and the parameters of the model"""
+        
+        self.a_prev = a_prev 
+        
+        self.z = np.dot(self.a_prev, self.parameters) + self.bias
+        
+        self.a = self.activation_function(self.z)
+        
+        return self.a
+    
+    def activation_function_derivative(self, da:np.array)->np.ndarray:
+        """Compute de deritave of the activation function"""
+
+        if self.activation == 'relu':
+            
+            dz = da
+            dz[self.z<=0] = 0
+            
+        elif self.activation == 'sigmoid':
+            
+            s = 1/(1+np.exp(-self.z))
+            dz = da * s * (1-s)
+            
+        else :
+            dz = da
+
+        return dz
