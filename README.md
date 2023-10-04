@@ -12,7 +12,7 @@ Here's a script to test the code available for training a simple linear model.
 python examples\linear_example.py
 ```
 
-Here's a script to test the code available for training a simple linear model. 
+Here's a script to test the code available for training a simple non linear model. 
 
 ```
 python examples\non_linear_example.py
