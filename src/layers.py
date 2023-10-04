@@ -49,3 +49,23 @@ class Dense():
             dz = da
 
         return dz
+    
+    def compute_grad(self, da:np.ndarray)->np.ndarray:
+        """Compute gradient for every parameters of this layer"""
+        
+        dz = self.activation_function_derivative(da)
+            
+        m = self.a.shape[1]
+        
+        self.dw = (1/m) * np.dot(self.a_prev.T, dz)
+        self.db = (1/m) * np.sum(dz, axis=0)
+        
+        da_prev = np.dot(dz, self.parameters.T)
+        
+        return da_prev
+
+    def parameters_update(self, learning_rate:float)->None:
+        """Update the values of the parameters using gradient descent algorithm"""
+        
+        self.parameters = self.parameters - learning_rate * self.dw
+        self.bias = self.bias - learning_rate * self.db
