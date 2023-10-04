@@ -1,1 +1,9 @@
+# Do not take env files
 deep_env/
+
+# Do not take caches files
+*__pycache__
+*cache
+
+# Do not take coverage files
+.coverage
