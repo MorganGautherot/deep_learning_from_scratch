@@ -2,6 +2,7 @@
 """ Contains class to build and train neural network architectures """
 
 import numpy as np
+from src.performance_metrics import logloss, accuracy
 
 class NeuralNetwork():
     
@@ -20,3 +21,10 @@ class NeuralNetwork():
             result = layer.predict(result)
 
         return result
+    
+    def compute_grad(self, y_train:np.ndarray, y_pred:np.ndarray)->None:
+        """Compute gradient for every layers of the network"""
+        da_prev = - (y_train/(y_pred+0.0000001)) + (1-y_train) / (1 - y_pred+0.0000001)
+        
+        for _, layer in reversed(self.architecture.items()):
+            da_prev = layer.compute_grad(da_prev)

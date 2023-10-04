@@ -1,5 +1,5 @@
 # test_neural_network.py
-""" Test the function inside class of test_neural_network.py """
+""" Test the function inside class of neural_network.py """
 
 from src.neural_network import NeuralNetwork
 from src.layers import Dense
