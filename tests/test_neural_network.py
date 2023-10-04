@@ -30,3 +30,27 @@ def test_predict()->None:
     # output of the network 
     output_data = model.predict(input_data)
     assert output_data.shape == (2, 5)
+
+## Unit test for the compute gradient function
+
+def test_compute_grad()-> None:
+    """Test the compute of gradient in the network for every layers"""
+    # Initialization of the network
+    model = NeuralNetwork([Dense(2, 20, 'relu'), 
+                              Dense(20, 10, 'relu'), 
+                              Dense(10, 1, 'sigmoid')])
+    # Generation of the input data
+    input_data = np.array([[0, 0], [10, 10]])
+    # Generation of the true data labels
+    true_label = np.array([[0], [1]])
+    # output of the network 
+    predict_label = model.predict(input_data)
+    # compute gradient for every layers
+    model.compute_grad(true_label, predict_label)
+    assert model.architecture[0].dw.shape == (2, 20)
+    assert model.architecture[0].db.shape == (20,)
+    assert model.architecture[1].dw.shape == (20, 10)
+    assert model.architecture[1].db.shape == (10,)
+    assert model.architecture[2].dw.shape == (10, 1)
+    assert model.architecture[2].db.shape == (1,)
+
