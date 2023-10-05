@@ -58,10 +58,6 @@ class NeuralNetwork:
             accu = accuracy(y_train, y_pred)
 
             print(
-                "Epoch : " +
-                str(i) +
-                " - loss : " +
-                str(loss) +
-                " - accuracy : " +
-                str(accu)
+                "Epoch : " + str(i) + " - loss : "
+                + str(loss) + " - accuracy : " + str(accu)
             )
