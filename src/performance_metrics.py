@@ -13,9 +13,7 @@ def logloss(y: np.ndarray, y_pred: np.ndarray) -> float:
     )
 
 
-def accuracy(y: np.ndarray, 
-             y_pred: np.ndarray, 
-             threshold: float = 0.5) -> float:
+def accuracy(y: np.ndarray, y_pred: np.ndarray, threshold: float = 0.5) -> float:
     """Compute accuracy between y and y_pred"""
 
     m = y.shape[0]
