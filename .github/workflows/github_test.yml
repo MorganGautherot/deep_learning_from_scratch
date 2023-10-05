@@ -27,4 +27,12 @@ jobs:
     - name: Run tests with pytest
       run: |
         coverage run -m pytest tests/
+    - name: Run coverage
+      run: |
         coverage report -m
+    - name: Run flake8 lint
+      uses: py-actions/flake8@v2
+      with:
+        ignore: "W503,W504"
+        exclude: "examples/linear_example.py,examples/non_linear_example.py"
+        max-line-length: "100"
