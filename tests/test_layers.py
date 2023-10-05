@@ -5,7 +5,8 @@ from src.layers import Dense
 import numpy as np
 
 # Unit test for the class Dense
-## Unit test for the initialization function
+# Unit test for the initialization function
+
 
 def test_dense_sigmoid_initialization() -> None:
     """Test the initialization of a dense layer with
@@ -45,7 +46,9 @@ def test_shape_bias_dense_initialization() -> None:
     layers = Dense(neurons_input=5, neurons_output=5)
     assert layers.bias.shape == (5,)
 
-## Unit test for the predict function
+
+# Unit test for the predict function
+
 
 def test_predict_dense() -> None:
     """Test the predict function of the dense layers"""
@@ -54,7 +57,9 @@ def test_predict_dense() -> None:
     predict_result = layers.predict(input_layers)
     assert predict_result.shape == (5,)
 
-## Unit test for the activation_function_derivative function
+
+# Unit test for the activation_function_derivative function
+
 
 def test_relu_activation_function_derivative_dense() -> None:
     """Test the activation_function_derivative function of the
@@ -105,7 +110,9 @@ def test_linear_activation_function_derivative_dense() -> None:
     derivative_result = layers.activation_function_derivative(output_layers)
     assert np.array_equal(derivative_result, output_layers)
 
-## Unit test for the compute_gradient function
+
+# Unit test for the compute_gradient function
+
 
 def test_compute_grad() -> None:
     """Test the compute_grad function for dense layer"""
@@ -115,7 +122,9 @@ def test_compute_grad() -> None:
     layers = Dense(neurons_input=5, neurons_output=3, activation="sigmoid")
     input_layers = np.array([1, 1, 1, 1, 1]).reshape(1, 5)
     # Compute the excpeted result
-    result_layers = np.array([[0.0015318 , 0.00214296, 0.00271719, 0.00185242, 0.00113495]])
+    result_layers = np.array(
+        [[0.0015318, 0.00214296, 0.00271719, 0.00185242, 0.00113495]]
+    )
     # Predict the input date using the dense layer
     output_layers = layers.predict(input_layers)
     # Compute the activation function derivative
@@ -123,7 +132,9 @@ def test_compute_grad() -> None:
     approximation_derivative_result = np.around(derivative_result, decimals=8)
     assert np.array_equal(approximation_derivative_result, result_layers)
 
-## Unit test for the parameters_update function
+
+# Unit test for the parameters_update function
+
 
 def test_parameters_update() -> None:
     """Test the parameters_update function for dense layer"""
@@ -143,4 +154,3 @@ def test_parameters_update() -> None:
 
     approximation_parameters = np.around(layers.parameters, decimals=8)
     assert np.array_equal(approximation_parameters, result_layers)
-
