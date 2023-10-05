@@ -34,4 +34,5 @@ jobs:
       uses: py-actions/flake8@v2
       with:
         ignore: "W503,W504"
+        exclude: "example/*"
         max-line-length: "100"
