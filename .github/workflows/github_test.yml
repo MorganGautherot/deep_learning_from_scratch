@@ -34,5 +34,5 @@ jobs:
       uses: py-actions/flake8@v2
       with:
         ignore: "W503,W504"
-        exclude: "examples/non_linear_example"
+        exclude: "examples/linear_example.py,examples/non_linear_example.py"
         max-line-length: "100"
